@@ -1,5 +1,3 @@
-import instaloader
-
 with open('whitelist.txt', 'r') as w:
     whitelist = w.read().splitlines()
     
@@ -12,7 +10,7 @@ def createArquive(lista, name):
         if (line.username not in whitelist):
             arquivo.write(line.username + '\n')
         else:
-            print(f"Ignorado: {line.username}")
+            print(f"Ignored: {line.username}")
         
 def generateInfo(profile):
     userFollowers = profile.get_followers()
@@ -20,6 +18,7 @@ def generateInfo(profile):
     userFollowees = profile.get_followees()
 
     unfollowList = list(set(userFollowees) - set(userFollowers))
+    
     createArquive(unfollowList, 'unfollowList')
     
 
